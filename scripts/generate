@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+require 'bluecloth'
+require 'erb'
+
+ROOT = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+LAYOUT = File.read(File.join(ROOT, 'templates', 'layout.erb'))
+
+module Helpers
+  def markdown(text)
+    BlueCloth.new(text).to_html
+  end
+end
+
+class Generator
+  include Helpers
+  
+  attr_accessor :file
+  
+  def initialize(file)
+    @file = file
+    @title = "YARD"
+    @content = File.read(file)
+  end
+  
+  def to_html
+    ERB.new(LAYOUT, 0, '<>').result(binding)
+  end
+  
+  def write
+    path = File.join(ROOT, 'public', html_path)
+    FileUtils.mkdir_p(File.dirname(path))
+    File.open(File.join(ROOT, 'public', html_path), 'w') {|f| f.write to_html }
+  end
+  
+  def html_path
+    file.sub(/^#{ROOT}\/site\/*/, '').sub(/\.md$/, '.html')
+  end
+end
+
+Dir[File.join(ROOT, 'site/**/*.md')].each do |file|
+  Generator.new(file).write
+end

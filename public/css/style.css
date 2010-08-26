@@ -1,0 +1,197 @@
+body { font-family: Helvetica, Arial, sans-serif; margin: 0; font-size: 16px; background: #101115; }
+.clear { clear: both; }
+.wrapper > *:first-child { width: 1000px; margin: 0 auto; }
+.title.wrapper { background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ddd), color-stop(1, #f4f4f4)) #f4f4f4; }
+.links.wrapper { background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #444), color-stop(1, #222)) #222; border-top: 1px solid #eee; border-bottom: 1px solid #bbb; -webkit-box-shadow: 3px 3px 10px #555; height: 46px; }
+.copyright.wrapper { border-top: 1px solid #444; }
+.content.wrapper { background: #999fa5; } 
+.footer.wrapper { background: #0a0a0a; height: 300px; border-top: 1px solid #aaa; }
+#title { padding-top: 20px; padding-bottom: 7px; clear: both; }
+#title h1, #title h2 { margin: 0; float: left; }
+#title h2 { color: #999; font-size: 0.9em; position: relative; top: -2px; left: 3px; }
+#title a { display: block; width: 104px; height: 45px; text-indent: -99999px; background: url(../images/logo.png) no-repeat; margin-bottom: 0px; padding-bottom: 10px; } 
+#links a { color: #e8d; padding: 14px 20px; text-decoration: none; border-right: 1px solid #4a4a4a; }
+#links a:hover { background: #a49; color: #f9e; }
+#links ul { list-style: none; padding: 0; margin: 0; } 
+#links ul li { margin: 0; float: left; position: relative; top: 14px; height: 55px; }
+#links ul li:first-child a { border-left: 1px solid #4a4a4a; }
+#copyright { padding: 10px; padding-left: 35px; color: #aaa; font-size: 0.75em; }
+#copyright a { color: #fff; text-decoration: none; }
+#content { position: relative; background: #fafafa; padding: 20px 40px; -webkit-box-shadow: 1px 3px 10px #444; width: 920px; } 
+#content a { color: #46a; border-bottom: 1px dotted #247; text-decoration: none; }
+#content a:hover { color: #137; border-bottom: 1px solid #459; }
+#footer { color: #999; font-size: 12px; }
+#footer .column { width: 235px; float: left; list-style: none; padding: 0; margin: 0; margin-right: 15px; }
+#footer .column:last-child { margin-right: 0; width: 250px; }
+#footer .column h2 { color: #ddd; font-size: 1.6em; margin-bottom: 0; border-bottom: 1px solid #555; }
+#footer .column ul { list-style: none; padding: 0; margin-top: 5px; }
+#footer .column ul li { margin-bottom: 5px; padding-bottom: 5px; border-bottom: 1px solid #333; }
+#footer .column a { color: #ccc; text-decoration: none; }
+#toc { 
+  padding: 20px; padding-right: 30px; border: 1px solid #ddd; float: right; background: #fff; margin-left: 20px; 
+  margin-bottom: 20px;
+  max-width: 300px;
+  -webkit-box-shadow: -2px 2px 6px #bbb;
+  -moz-box-shadow: -2px 2px 6px #bbb;
+  -webkit-border-radius: 7px;
+}
+#toc a { border: 0; }
+#toc a:hover { border: 0; }
+#toc.nofloat { float: none; border: 0; padding: 0; margin: 0; -webkit-box-shadow: 0 0 0 #fff; -moz-box-shadow: 0 0 0 #fff; background: transparent; margin-bottom: 4em; max-width: none; }
+#toc.nofloat li { line-height: 1.3em; }
+#toc.nofloat ol { padding-left: 25px; }
+
+#content a.post-edit-link { font-size: 0.8em; position: absolute; top: 10px; right: 10px; text-decoration: none; border: 0; background: #46a; color: #fff; padding: 4px; border-radius: 7px; z-index: 999; }
+#content .breadcrumb a { font-size: 0.9em; border-bottom: 0; color: #99a; }
+#content .breadcrumb a:hover { color: #558; }
+#content .breadcrumb + h1 { margin-top: 0; }
+
+.menu-item .sub-menu { display: none; position: absolute; background: #111; padding: 12px; z-index: 999; }
+
+.entry h2 { margin-top: 2.2em; margin-bottom: 1em; font-size: 22px; color: #000; }
+.entry h3 { margin-top: 2.2em; margin-bottom: 1em; font-size: 18px; }
+.entry pre { padding: 20px; background: #f8f8ff; border: 1px solid #c8c8cc; border-radius: 7px; }
+.entry code { font-family: Monaco, Consolas, monospace; font-size: 14px; }
+
+.note { 
+  display: block;
+  color: #222;
+  -moz-border-radius: 3px; -webkit-border-radius: 3px; 
+  background: #e3e4e3; border: 1px solid #d5d5d5; padding: 7px 10px;
+}
+.note.warn { background: #ffffc5; border-color: #ececaa; }
+.note.api { background: #e3e9e9; }
+.note.deprecated { background: #ffe5e5; border-color: #e9dada; }
+.note.title { text-transform: lowercase; padding: 1px 5px; margin-left: 5px; font-size: 0.9em; font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif; }
+
+/* highlight.js */
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+pre code {
+  display: block;
+  color: #000;
+  background: #f8f8ff
+}
+
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .lisp .title,
+pre .subst {
+  color: #000;
+  font-weight: bold
+}
+
+pre .number,
+pre .hexcolor {
+  color: #40a070
+}
+
+pre .string,
+pre .attribute .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #080
+}
+
+pre .title,
+pre .id {
+  color: #900;
+  font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .subst {
+  font-weight: normal
+}
+
+pre .class .title,
+pre .tex .command {
+  color: #458;
+  font-weight: bold
+}
+
+pre .tag,
+pre .css .keyword,
+pre .html .keyword,
+pre .tag .title,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .instancevar,
+pre .lisp .body {
+  color: #008080
+}
+
+pre .regexp {
+  color: #009926
+}
+
+pre .class {
+  color: #458;
+  font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .ruby .symbol .keyword,
+pre .ruby .symbol .keymethods,
+pre .lisp .keyword,
+pre .tex .special {
+  color: #cc0000;
+  font-weight: normal;
+}
+
+pre .builtin,
+pre .built_in,
+pre .lisp .title {
+  color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+  font-weight: bold
+}
+
+pre .deletion {
+  background: #fdd
+}
+
+pre .addition {
+  background: #dfd
+}
+
+pre .diff .change {
+  background: #0086b3
+}
+
+pre .chunk {
+  color: #aaa
+}
+
+pre .tex .formula {
+  opacity: 0.5;
+}
+
