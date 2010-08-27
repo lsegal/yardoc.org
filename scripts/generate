@@ -1,43 +1,56 @@
 #!/usr/bin/env ruby
+require 'yard'
 require 'fileutils'
 require 'bluecloth'
 require 'erb'
 
 ROOT = File.expand_path(File.join(File.dirname(__FILE__), '..'))
-LAYOUT = File.read(File.join(ROOT, 'templates', 'layout.erb'))
+LAYOUTS = {}
 
 module Helpers
   def markdown(text)
     BlueCloth.new(text).to_html
+  end
+  
+  def erb(__file)
+    LAYOUTS[__file] ||= File.read(File.join(ROOT, 'templates', "#{__file}.erb"))
+    ERB.new(LAYOUTS[__file], 0, '<>').result(binding)
   end
 end
 
 class Generator
   include Helpers
   
-  attr_accessor :file
+  attr_accessor :url, :root_path, :layout, :content
   
-  def initialize(file)
-    @file = file
-    @title = "YARD"
-    @content = File.read(file)
+  def initialize(url, layout, root_path = '.')
+    self.root_path = root_path
+    self.url = url
+    self.layout = layout.to_sym
+    yield(self) if block_given?
   end
   
   def to_html
-    ERB.new(LAYOUT, 0, '<>').result(binding)
+    erb(layout)
   end
   
   def write
-    path = File.join(ROOT, 'public', html_path)
+    path = File.join(ROOT, 'public', url + '.html')
     FileUtils.mkdir_p(File.dirname(path))
-    File.open(File.join(ROOT, 'public', html_path), 'w') {|f| f.write to_html }
-  end
-  
-  def html_path
-    file.sub(/^#{ROOT}\/site\/*/, '').sub(/\.md$/, '.html')
+    File.open(path, 'w') {|f| f.write to_html }
   end
 end
 
-Dir[File.join(ROOT, 'site/**/*.md')].each do |file|
-  Generator.new(file).write
+def map(url, layout, &block)
+  Generator.new(url, layout, &block).write
 end
+
+Dir[File.join(ROOT, 'site/**/*.md')].each do |file|
+  rel = File.relative_path(File.dirname(file), ROOT)
+  rel = '.' if rel.empty?
+  url = file.sub(/^#{ROOT}\/site\/*/, '').sub(/\.md$/, '')
+  content = File.read(file)
+  Generator.new(url, file =~ %r{/guides/} ? :guide : :regular, rel) {|g| g.content = content }.write
+end
+
+map 'index', :home
