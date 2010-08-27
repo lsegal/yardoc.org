@@ -4,8 +4,8 @@ function generateTOC() {
   var toc = _toc;
   var counter = 0;
   var tags = ['h2', 'h3', 'h4', 'h5', 'h6'];
-  if ($('.entry h1').length > 1) tags.unshift('h1');
-  for (i in tags) { tags[i] = '.entry ' + tags[i] }
+  if ($('#content h1').length > 1) tags.unshift('h1');
+  for (i in tags) { tags[i] = '#content ' + tags[i] }
   var lastTag = parseInt(tags[0][1]);
   $(tags.join(', ')).each(function() {
     if ($(this).hasClass('entry')) return;
@@ -29,7 +29,7 @@ function generateTOC() {
   });
   if (!show) return;
   html = '<div id="toc" class="nofloat"><p class="title"><a class="hide_toc" href="#"><strong>Table of Contents</strong></a> <small>(<a href="#" class="float_toc">float</a>)</small></p></div>';
-  $('.entry h1').after(html);
+  $('#content h1').after(html);
   $('#toc').append(_toc);
   $('#toc .hide_toc').toggle(function() { 
     $('#toc .top').slideUp('fast');
@@ -49,4 +49,12 @@ function generateTOC() {
   });
 }
 
-hljs.initHighlightingOnLoad();
+function initNavLinks() {
+  $('#nav a').hover(function() { 
+    $(this).css({'padding-top':'25px'}, 100); 
+  }, function() { 
+    $(this).css({'padding-top':'5px'}, 100); 
+  });
+}
+
+$(initNavLinks);

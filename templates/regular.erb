@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html> 
+  <head> 
+    <%= erb :head %>
+    <title><%= @title || "YARD - A Ruby Documentation Tool" %></title> 
+    <script type="text/javascript" src="<%= root_path %>/js/highlight.pack.js"></script>
+    <script type="text/javascript">
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head> 
+  <body> 
+    <%= erb :top %>
+    <div class="content wrapper">
+      <div id="content" class="guide"><%= markdown @content %></div> 
+    </div>
+    <%= erb :copyright %>
+  </body> 
+</html>

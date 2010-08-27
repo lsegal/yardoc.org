@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html> 
+  <head> 
+    <%= erb :head %>
+    <title>YARD - A Ruby Documentation Tool</title> 
+    <script type="text/javascript">
+      var animating = false;
+      function animateSwap() {
+          if (animating) { animating = this; return; }
+          var title = $(this).children('h2').text();
+          var bg = $(this).children('.image').css('background-image');
+          if ($('#showcase h1').text() == title) return;
+          var oldSwap = $('#showcase .swap');
+          var newSwap = $('<div/>').addClass('swap').append($('<h1/>').text(title)).css({
+            left:oldSwap.position().left+1000+'px',position:'absolute',opacity:0,'background-image':bg
+          });
+          $('#showcase').append(newSwap);
+          _typeface_js.replaceText($('#showcase .swap h1')[1]);
+          $('.swap h1').css('visibility', 'visible');
+          animating = this;
+          oldSwap.animate({left:'-1000px',opacity:'0'}, 'slow', function() { 
+            oldSwap.remove();
+          });
+          newSwap.animate({left:oldSwap.position().left+'px',opacity:'1'}, 'slow', function() {
+            var wasAnimating = animating;
+            animating = false;
+            newSwap.css({position:'relative',left:'0px'});
+            if (wasAnimating && this != wasAnimating) animateSwap.call(wasAnimating);
+          });
+      }
+      
+      $(function() { 
+        $('#content.home .blurb .preview').hover(function() { animateSwap.call($(this).parent()[0]); });
+        $('#content.home .blurb h2, #content.home .blurb .preview').click(function() { animateSwap.call($(this).parent()[0]); });
+      });
+    </script>
+  </head> 
+  <body> 
+    <!--<a id="pledgie" href='http://www.pledgie.com/campaigns/940'><img src='images/donate.png' /></a> -->
+    <%= erb :top %>
+
+    <div class="showcase wrapper">
+      <div id="showcase">
+        <div class="swap">
+          <h1>Preview As You Document</h1>
+        </div>
+      </div>
+    </div>
+    <div class="content wrapper">
+      <div id="content" class="home">
+        <div class="column">
+          <div class="blurb">
+            <img src="images/Preview-64.png" />
+            <h2>Preview As You Document</h2>
+            <span class="preview">&rarr;</span>
+            <p>With the new dynamic documentation server in YARD 0.6, you can now see exactly what YARD sees as you document your code. Simply type <code>yard server --reload</code> to have your project watch for changes in your codebase everytime you refresh the page. With this functionality, you almost have no excuse <em>not</em> to write documentation!</p>  
+            <span class="image" style="background-image: url(images/ss5.png);"></span>
+          </div>
+          
+          <div class="blurb">
+            <img src="images/Certificate-64.png" />
+            <h2>Support Your Own DSL</h2>
+            <span class="preview">&rarr;</span>
+            <p>You can write all kinds of extensions in YARD, including ones that can understand all of the dynamic magic your framework does in its own little Doman Specific Languages (DSLs). Most importantly, it's <a href="guides/extending-yard/writing-handlers.html">really easy</a> to do! There are already plugins that support frameworks like <a href="http://rspec.info">RSpec</a>, <a href="http://datamapper.org">DataMapper</a>, <a href="http://www.sinatrarb.com">Sinatra</a>, and support for others are in the works.</p>
+            <span class="image" style="background-image: url(images/ss8.png);"></span>
+          </div>
+        </div>
+        <div class="column">
+          <div class="blurb">
+            <img src="images/Paint-64.png" />
+            <h2>Easily Customize Templates</h2>
+            <span class="preview">&rarr;</span>
+            <p>YARD is the only Ruby documentation tool that supports storing metadata alongside your documentation. This metadata can be used to create consistent documentation in any format you wish. YARD also comes with a powerful templating system to quickly modify existing templates. And for the simple case, you can even add custom metadata to your docs with nothing but the command-line.</p>
+            <span class="image" style="background-image: url(images/ss6.png);"></span>
+          </div>
+
+          <div class="blurb">
+            <img src="images/Tool-64.png" />
+            <h2>Extend, Extend, Extend!</h2>
+            <span class="preview">&rarr;</span>
+            <p>YARD already has a handful of really great extensions, and that number is growing every day. YARD has tools to check your <a href="http://github.com/dkubb/yardstick">documentation quality</a> (and coverage), run inline RSpec tests, test your documentation <a href="http://github.com/lsegal/yard-examples/blob/master/doctest/doctest.rb">example code</a>, add "<a href="http://github.com/lsegal/yard-blame">git blame</a>" support to your source listings, graphs to your documentation, even one to <a href="http://github.com/pvande/yard-perl-plugin">document Perl code</a>!</p>
+            <span class="image" style="background-image: url(images/ss7.png);"></span>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="wrapper about">
+      <div id="about" class="home">
+        <div id="what-is">
+          <h2 class="nomargin">What Is YARD?</h2>
+          <img class="seat" src="images/Magenta-Seat-256.png" title="Nothing to do with YARD, it just looks cool. "/>
+          <p>YARD is a documentation generation tool for the Ruby programming language. It enables the user to generate consistent, usable documentation that can be? exported to a number of formats very easily, and also supports extending for custom Ruby constructs such as custom class level definitions. Above is a highlight of the some of YARD's notable features.</p>
+          <p>And of course YARD comes with much more functionality, including the ability to serve documentation for gems, the ability to group methods into logical sections, and much more. You can read about all of the new features in YARD 0.6 in the <a href="">What's New</a> document.</p>
+        </div>
+        
+        <div class="clear"></div>
+        <div class="install">
+          <h2>Installing &amp; Using</h2>
+          
+          <div class="column">
+            <p>To install YARD with RubyGems:</p>
+            <pre class="install"><code class="sh">$ gem install yard</code></pre>
+          </div>
+          
+          <div class="column">
+            <p>And see all the commands:</p>
+            <pre><code class="sh">$ yard --help</code></pre>
+          </div>
+          <div class="clear"></div>
+        </div>
+        
+        <div class="columns">
+          <div class="column uses">
+            <h2>Who Uses YARD?</h2>
+            <p>YARD is used in a wide variety of projects including personal ones that we don't know about, but here are some projects that we know do:</p>
+            <p><a href='http://addressable.rubyforge.org/'>Addressable</a>, <a href='http://adhoc.rubyforge.org/'>Adhoc</a>, <a href='http://amp.carboni.ca/'>Amp</a>, <a href='http://crm114.rubyforge.org/'>CRM114.rb</a>, <a href='http://datamapper.org/'>DataMapper</a>, <a href='http://github.com/dvyjones/defender'>Defender</a>, <a href='http://github.com/robgleeson/dia'>Dia</a>, <a href='http://docs.github.com/'>docs.github.com</a>, <a href='http://github.com/seydar/fssnapshot/'>fssnapshot</a>, <a href='http://haml-lang.com/'>Haml</a>, <a href='http://cypherpunk.rubyforge.org/i2p/'>I2P.rb</a>, <a href='http://tagaholic.me/lightning'>lightning</a>, <a href='http://github.com/lsegal/mmmail'>mmmail</a>, <a href='http://github.com/mongodb/mongo-ruby-driver'>MongoDB</a>, <a href='http://nanoc.stoneship.org/'>nanoc</a>, <a href='http://ohm.keyvalue.org/'>Ohm</a>, <a href='http://openpgp.rubyforge.org/'>OpenPGP.rb</a>, <a href='http://php.rubyforge.org/'>PHP.rb</a>, <a href='http://www.puppetlabs.com/'>Puppet</a>, <a href='http://datagraph.rubyforge.org/rack-throttle/'>Rack::Throttle</a>, <a href='http://rdf.rubyforge.org/'>RDF.rb</a>, <a href='http://rdoc.info/'>rdoc.info</a>, <a href='http://ronin.rubyforge.org/'>Ronin</a>, <a href='http://sass-lang.com/'>Sass</a>, <a href='http://github.com/kpumuk/sphinx'>sphinx</a>, <a href='http://spidr.rubyforge.org/'>Spidr</a>, <a href='http://spira.rubyforge.org/'>Spira</a>, <a href='http://github.com/lsegal/tadpole'>tadpole</a>, <a href='http://giantrobots.thoughtbot.com/2009/6/4/documentation-demolition-derby'>thoughtbot</a>, <a href='http://cypherpunk.rubyforge.org/tor/'>Tor.rb</a>, <a href='http://trinity.datagraph.org/'>Trinity</a>, <a href='http://trith.rubyforge.org/'>Trith</a>, <a href='http://vanity.labnotes.org/'>vanity</a></p>
+            
+            <p>A full list can be found <a href="http://wiki.github.com/lsegal/yard/whos-using-yard">here</a>.</p> 
+          </div>
+          <div class="column support">
+            <h2>Contributing &amp; Support</h2>
+            <p>If you're interesting in helping out, you can use the following methods to get in touch:</p>
+            <ul>
+              <li>IRC: <tt><a href="irc://irc.freenode.net/yard">#yard</a></tt> on <tt>irc.freenode.net</tt>.</li> 
+              <li>Mailing list: <a href="http://groups.google.com/group/yardoc">http://groups.google.com/group/yardoc</a></li> 
+              <li>Github: <a href="http://github.com/lsegal/yard">http://github.com/lsegal/yard</a></li> 
+            </ul> 
+            <p>YARD also accepts donations via Pledgie:</p> 
+            <a href='http://www.pledgie.com/campaigns/940'><img alt='Click here to lend your support to: yard and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/940.png?skin_name=chrome' border='0' /></a> 
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+
+    <%= erb :copyright %>
+  </body> 
+</html>
