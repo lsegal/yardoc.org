@@ -19,7 +19,7 @@ p code { padding: 1px; border-radius: 3px; font-size: 1.2em; padding: 0 6px; }
 .nomargin { margin-top: 0; }
 .nobottom { margin-bottom: 0; }
  
-.column { width: 435px; float: left; }
+.column { width: 455px; float: left; }
 .column:first-child { margin-right: 40px; }
 
 .top.wrapper { background: #eee; height: 160px; border-bottom: 1px solid #e0e0e0; }
