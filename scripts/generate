@@ -24,7 +24,7 @@ class Generator
   attr_accessor :url, :root_path, :layout, :content
   
   def initialize(url, layout, root_path = '.')
-    self.root_path = root_path
+    self.root_path = root_path.empty? ? '.' : root_path.gsub(%r{/$}, '')
     self.url = url
     self.layout = layout.to_sym
     yield(self) if block_given?
@@ -42,7 +42,7 @@ class Generator
 end
 
 def map(url, layout, &block)
-  Generator.new(url, layout, &block).write
+  Generator.new(url, layout, '../' * url.count('/'), &block).write
 end
 
 Dir[File.join(ROOT, 'site/**/*.md')].each do |file|
@@ -54,3 +54,4 @@ Dir[File.join(ROOT, 'site/**/*.md')].each do |file|
 end
 
 map 'index', :home
+map 'guides/index', :guides
