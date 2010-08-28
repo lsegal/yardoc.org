@@ -87,6 +87,17 @@ p code { padding: 1px; border-radius: 3px; font-size: 1.2em; padding: 0 6px; }
 #pledgie { right: 0; top: 0px; position: absolute; z-index: 9998; border: 0; }
 #pledgie img { border: 0; }
 
+#types_info input { font-size: 1.2em; border: 1px solid #aaa; }
+#types_info input[type=submit] { background: #eee; height: 24px; font-size: 1em; position: relative; top: -1px; }
+#types_text { width: 600px; }
+#types_results { padding: 10px; border: 1px dotted #555; background: #fafafa; }
+#examples dt { font-weight: bold; margin-bottom: 5px; color: #333; }
+#examples dd { border: 1px dotted #aaa; background: #e5eeff; cursor: pointer; padding: 3px 10px; margin-left: 20px; margin-bottom: 10px; }
+#examples dd:hover { border-style: solid; background: #d5e5ff }
+#content #types_info h2 { font-size: 1.1em; margin-top: 10px; }
+#content #types_info small { font-size: 0.9em; }
+#content #types_info h2 small { font-weight: normal; font-family: sans-serif; font-size: 0.8em; }
+
 #copyright { width: 950px; margin: 0 auto; color: #ccc; font-size: 0.9em; }
 #copyright p { margin-left: 10px; text-align: center; }
 #copyright a { color: #0af; text-decoration: none; }
