@@ -42,7 +42,7 @@ descriptive.
 
 YARD is made to be compatiblewith RDoc formatting. In fact, YARD does no 
 processing on RDoc documentationstrings, and leaves this up to the output 
-generation tool to decide how torender the documentation.
+generation tool to decide how to render the documentation.
 
 ## A Local Documentation Server
 
