@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'yard'
 require 'fileutils'
-require 'bluecloth'
+require 'rdiscount'
 require 'erb'
 
 ROOT = File.expand_path(File.join(File.dirname(__FILE__), '..'))
@@ -9,7 +9,7 @@ LAYOUTS = {}
 
 module Helpers
   def markdown(text)
-    BlueCloth.new(text).to_html
+    RDiscount.new(text).to_html
   end
   
   def erb(__file)
