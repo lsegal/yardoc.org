@@ -4,7 +4,7 @@ This guide will explain how to use YARD to document a Domain Specific Language (
 
 ## The Two Handler APIs (1.8 and 1.9)
 
-YARD had adopted Ruby 1.9 as its main support platform very early on as a long-term investment into the future of Ruby's ecosystem. The main As more and more users are migrating to 1.9, this investment is paying off. YARD designed 
+YARD had adopted Ruby 1.9 as its main support platform very early on as a long-term investment into the future of Ruby's ecosystem. The main As more and more users are migrating to 1.9, this investment is paying off.
 
 However, 1.8 usage is still widespread, and YARD still maintains support for Ruby versions back to 1.8.6. Therefore, the old handler syntax (which was used in YARD 0.2.x) is still available under the "Legacy" namespace (specifically, whenever you see a class name under `Handlers::Ruby`, you can find the 1.8 equivalent class in `Handlers::Ruby::Legacy`). We will see a few of the differences between these APIs later in this guide.
 
