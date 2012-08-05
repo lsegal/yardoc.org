@@ -9,7 +9,7 @@ for meta tags alongside regular code
 documentation. These tags should be able to happily sit side by side RDoc formatted
 documentation, but provide a much more consistent and usable way to describe
 important information about objects, such as what parameters they take and what types
-they are expected to be, what type amethod should return, what exceptions it can 
+they are expected to be, what type a method should return, what exceptions it can 
 raise, if it is deprecated, etc.. It also allows information to be better (and more 
 consistently) organizedduring the output generation phase. You can find a list
 of tags in the [Tags.md](http://yardoc.org/docs/yard/file/docs/Tags.md#List_of_Available_Tags) file.
@@ -41,7 +41,7 @@ descriptive.
 ## RDoc Formatting Compatibility
 
 YARD is made to be compatiblewith RDoc formatting. In fact, YARD does no 
-processing on RDoc documentationstrings, and leaves this up to the output 
+processing on RDoc documentation strings, and leaves this up to the output 
 generation tool to decide how to render the documentation.
 
 ## A Local Documentation Server
@@ -85,14 +85,14 @@ any markup.
                                                                               
 ## Raw Data Output
 
-YARD also outputs documented objects as raw data (thedumped Namespace) which 
-can be reloaded to do generation at a later date, oreven auditing on code. This 
+YARD also outputs documented objects as raw data (the dumped Namespace) which 
+can be reloaded to do generation at a later date, or even auditing on code. This 
 means that any developer can use the raw data toperform output generation for 
 any custom format, such as YAML, for instance.While YARD plans to support XHTML 
-style documentation output as well ascommand line (text based) and possibly XML, 
+style documentation output as well as command line (text based) and possibly XML, 
 this may still be useful for those who would like to reap the benefits of YARD's 
-processing in other forms, suchas throwing all the documentation into a database.
-Another useful way ofexploiting this raw data format would be to write tools 
+processing in other forms, such as throwing all the documentation into a database.
+Another useful way of exploiting this raw data format would be to write tools 
 that can auto generate test cases, for example, or show possible unhandled 
 exceptions in code.
 
