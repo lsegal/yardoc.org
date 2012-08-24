@@ -87,8 +87,8 @@ any markup.
 
 YARD also outputs documented objects as raw data (the dumped Namespace) which 
 can be reloaded to do generation at a later date, or even auditing on code. This 
-means that any developer can use the raw data toperform output generation for 
-any custom format, such as YAML, for instance.While YARD plans to support XHTML 
+means that any developer can use the raw data to perform output generation for 
+any custom format, such as YAML, for instance. While YARD plans to support XHTML 
 style documentation output as well as command line (text based) and possibly XML, 
 this may still be useful for those who would like to reap the benefits of YARD's 
 processing in other forms, such as throwing all the documentation into a database.
