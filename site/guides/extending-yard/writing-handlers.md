@@ -72,8 +72,8 @@ found by running `ruby -rripper -e 'puts Ripper::EVENTS'` or in irb:
      :rbrace, :rbracket, :regexp_beg, :regexp_end, :rparen, :semicolon, :sp,
      :symbeg, :tlambda, :tlambeg, :tstring_beg, :tstring_content,
      :tstring_end, :words_beg, :words_sep]
-    
-<span class="note warn">You should consult [Ripper documentation](http://yardoc.org/docs/ruby-stdlib/Ripper)
+
+<span class="note warn">You should consult [Ripper documentation](http://www.rubydoc.info/stdlib/ripper)
 on the meaning of each node type, though currently the documentation for these
 nodes is sparse.</span>
 
@@ -113,13 +113,13 @@ The above handler would handle classes and modules.
 
 We discussed basic matchers based on a node type, but you can also create more
 complex custom matchers by subclassing the
-[HandlesExtension](http://yardoc.org/docs/YARD/Handlers/Ruby/HandlesExtension)
+[HandlesExtension](http://yardoc.org/docs/yard/YARD/Handlers/Ruby/HandlesExtension)
 class which responds to `#matches?`. YARD has a few of these matchers already
 available for common tasks, like matching method calls and conditionals.
 
 Specifically, the new-style handlers provide the two matcher extensions
-[`method_call`](http://yardoc.org/docs/YARD/Handlers/Ruby/Base#method_call-class_method)
-and [`meta_type`](YARD/Handlers/Ruby/Base#meta_type-class_method). Which can
+[`method_call`](http://yardoc.org/docs/yard/YARD/Handlers/Ruby/Base#method_call-class_method)
+and [`meta_type`](http://yardoc.org/docs/yard/YARD/Handlers/Ruby/Base#meta_type-class_method). Which can
 be used in the form:
 
 ```ruby
