@@ -88,7 +88,7 @@ p code { padding: 1px; border-radius: 3px; font-size: 1.2em; padding: 0 6px; }
 #pledgie img { border: 0; }
 
 #types_info input { font-size: 1.2em; border: 1px solid #aaa; }
-#types_info input[type=submit] { background: #eee; height: 24px; font-size: 1em; position: relative; top: -1px; }
+#types_info button { background: #eee; height: 24px; font-size: 1em; border: 1px solid #e3e3e3; }
 #types_text { width: 600px; }
 #types_results { padding: 10px; border: 1px dotted #555; background: #fafafa; }
 #examples dt { font-weight: bold; margin-bottom: 5px; color: #333; }

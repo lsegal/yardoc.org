@@ -1,10 +1,8 @@
 <script type="text/javascript">
   $(function() {
-    $('#types_form').submit(function() {
-      var types = encodeURIComponent($('#types_text').val());
-      $.get('types.cgi?' + types, null, function(data, status) {
-        $('#types_results').html(data);
-      });
+    $('#types_submit').click(function(e) {
+      e.preventDefault();
+      $('#types_results').html(TypesParser.parse($('#types_text').val()));
       return false;
     });
 
@@ -25,10 +23,8 @@
   <p><small>You can find the code on <a href="http://github.com">Github</a> at <a href="http://github.com/lsegal/yard-types-parser">http://github.com/lsegal/yard-types-parser</a>.</small></p>
 
   <div id="see_results"></div>
-  <form id="types_form">  
-    <h2>Enter a List of Types</h2>
-    <input id="types_text" type="text" /> <input id="submit" type="submit" value="Parse" />
-  </form>
+  <h2>Enter a List of Types</h2>
+  <input id="types_text" type="text" /> <button id="types_submit">Parse</button>
 
   <div id="results">
     <h2>Results</h2>
