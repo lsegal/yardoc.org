@@ -1,0 +1,16 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rdiscount (2.2.0.1)
+    yard (0.9.4)
+
+PLATFORMS
+  ruby
+  x64-mingw32
+
+DEPENDENCIES
+  rdiscount
+  yard
+
+BUNDLED WITH
+   1.16.3
