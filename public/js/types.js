@@ -67,7 +67,7 @@ class TypesParser {
   }
 
   static parse(input) {
-    return new TypesParser(input).parse().map((v) => v.toString(false)).join(';<br>\n');
+    return new TypesParser(input).parse();
   }
 
   parse() {
@@ -159,3 +159,27 @@ class TypesParser {
     }
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const submit = document.getElementById('types_submit');
+  const results = document.getElementById('types_results');
+  const input = document.getElementById('types_text');
+
+  submit.addEventListener('click', () => {
+    const result = TypesParser.parse(input.value);
+    const html = result.map((v) => v.toString(false)).join(';<br>\n');
+    results.innerHTML = html;
+  });
+
+  input.addEventListener('keyup', (e) => {
+    if (e.keyCode === 13) submit.click();
+  });
+
+  document.querySelectorAll('#examples dd').forEach((el) => {
+    el.addEventListener('click', () => {
+      input.value = el.innerText;
+      submit.click();
+      document.location = '#see_results';
+    });
+  });
+});
