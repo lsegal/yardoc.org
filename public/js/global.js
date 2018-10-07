@@ -48,13 +48,3 @@ function generateTOC() {
     $('#toc').toggleClass('nofloat');
   });
 }
-
-function initNavLinks() {
-  $('#nav a').hover(function() { 
-    $(this).css({'padding-top':'25px'}, 100); 
-  }, function() { 
-    $(this).css({'padding-top':'5px'}, 100); 
-  });
-}
-
-$(initNavLinks);
