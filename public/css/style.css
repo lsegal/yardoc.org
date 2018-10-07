@@ -356,17 +356,6 @@ p code {
   right: 0;
 }
 
-#pledgie {
-  right: 0;
-  top: 0px;
-  position: absolute;
-  z-index: 9998;
-  border: 0;
-}
-#pledgie img {
-  border: 0;
-}
-
 #types_info input {
   font-size: 1.2em;
   border: 1px solid #aaa;
