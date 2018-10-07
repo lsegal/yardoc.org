@@ -16,7 +16,6 @@
             left:oldSwap.position().left+1000+'px',position:'absolute',opacity:0,'background-image':bg
           });
           $('#showcase').append(newSwap);
-          _typeface_js.replaceText($('#showcase .swap h1')[1]);
           $('.swap h1').css('visibility', 'visible');
           animating = this;
           oldSwap.animate({left:'-1000px',opacity:'0'}, 'slow', function() { 
