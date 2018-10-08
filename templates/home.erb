@@ -4,84 +4,52 @@
   <head> 
     <%= erb :head %>
     <title>YARD - A Ruby Documentation Tool</title> 
-    <script type="text/javascript">
-      var animating = false;
-      function animateSwap() {
-          if (animating) { animating = this; return; }
-          var title = $(this).children('h2').text();
-          var bg = $(this).children('.image').css('background-image');
-          if ($('#showcase h1').text() == title) return;
-          var oldSwap = $('#showcase .swap');
-          var newSwap = $('<div/>').addClass('swap').append($('<h1/>').text(title)).css({
-            left:oldSwap.position().left+1000+'px',position:'absolute',opacity:0,'background-image':bg
-          });
-          $('#showcase').append(newSwap);
-          $('.swap h1').css('visibility', 'visible');
-          animating = this;
-          oldSwap.animate({left:'-1000px',opacity:'0'}, 'slow', function() { 
-            oldSwap.remove();
-          });
-          newSwap.animate({left:oldSwap.position().left+'px',opacity:'1'}, 'slow', function() {
-            var wasAnimating = animating;
-            animating = false;
-            newSwap.css({position:'relative',left:'0px'});
-            if (wasAnimating && this != wasAnimating) animateSwap.call(wasAnimating);
-          });
-      }
-      
-      $(function() { 
-        $('#content.home .blurb h2, #content.home .blurb .preview').hover(function() { animateSwap.call($(this).parent()[0]); });
-        $('#content.home .blurb h2, #content.home .blurb .preview').click(function() { animateSwap.call($(this).parent()[0]); });
-      });
-    </script>
   </head> 
   <body> 
     <%= erb :top %>
 
-    <div class="dark wrapper">
-      <div id="showcase">
-        <div class="swap">
-          <h1>Preview As You Document</h1>
+    <div id="hero" data-selected="1">
+      <div class="dark wrapper">
+        <div id="showcase">
+          <i class="fas fa-angle-left"></i>
+          <i class="fas fa-angle-right"></i>
         </div>
       </div>
-    </div>
-    <div class="light wrapper">
-      <div id="content" class="home">
-        <div class="column">
-          <div class="blurb">
-            <img src="images/Preview-64.png" />
-            <h2>Preview As You Document</h2>
-            <span class="preview">&rarr;</span>
-            <p>With the new dynamic documentation server in YARD 0.6, you can now see exactly what YARD sees as you document your code. Simply type <code>yard server --reload</code> to have your project watch for changes in your codebase everytime you refresh the page. With this functionality, you almost have no excuse <em>not</em> to write documentation!</p>  
-            <span class="image" style="background-image: url(images/ss5.png);"></span>
+      <div class="light wrapper">
+        <div class="selector"></div>
+        <div id="content" class="home">
+          <div class="blurb" data-bg="images/ss5.png">
+            <aside>
+              <img src="images/Preview-64.png" />
+              <h2>Preview As You Document <i class="fas fa-angle-right"></i></h2>
+              <p>With the new dynamic documentation server in YARD 0.6, you can now see exactly what YARD sees as you document your code. Simply type <code>yard server --reload</code> to have your project watch for changes in your codebase everytime you refresh the page. With this functionality, you almost have no excuse <em>not</em> to write documentation!</p>  
+            </aside>
           </div>
           
-          <div class="blurb">
-            <img src="images/Certificate-64.png" />
-            <h2>Support Your Own DSL</h2>
-            <span class="preview">&rarr;</span>
+          <div class="blurb" data-bg="images/ss8.png">
+            <aside>
+              <img src="images/Certificate-64.png" />
+            <h2>Support Your Own DSL <i class="fas fa-angle-right"></i></h2>
             <p>You can write all kinds of extensions in YARD, including ones that can understand all of the dynamic magic your framework does in its own little Domain Specific Languages (DSLs). Most importantly, it's <a href="guides/extending-yard/writing-handlers.html">really easy</a> to do! There are already plugins that support frameworks like <a href="http://rspec.info">RSpec</a>, <a href="http://datamapper.org">DataMapper</a>, <a href="http://www.sinatrarb.com">Sinatra</a>, and support for others are in the works.</p>
-            <span class="image" style="background-image: url(images/ss8.png);"></span>
-          </div>
-        </div>
-        <div class="column">
-          <div class="blurb">
-            <img src="images/Paint-64.png" />
-            <h2>Easily Customize Templates</h2>
-            <span class="preview">&rarr;</span>
-            <p>YARD is the only Ruby documentation tool that supports storing metadata alongside your documentation. This metadata can be used to create consistent documentation in any format you wish. YARD also comes with a powerful templating system to quickly modify existing templates. And for the simple case, you can even add custom metadata to your docs with nothing but the command-line.</p>
-            <span class="image" style="background-image: url(images/ss6.png);"></span>
+            </aside>
           </div>
 
-          <div class="blurb">
-            <img src="images/Tool-64.png" />
-            <h2>Extend, Extend, Extend!</h2>
-            <span class="preview">&rarr;</span>
-            <p>YARD already has a handful of really great extensions, and that number is growing every day. YARD has tools to check your <a href="http://github.com/dkubb/yardstick">documentation quality</a> (and coverage), run inline RSpec tests, test your documentation <a href="http://github.com/lsegal/yard-examples/blob/master/doctest/doctest.rb">example code</a>, add "<a href="http://github.com/lsegal/yard-blame">git blame</a>" support to your source listings, graphs to your documentation, even one to <a href="http://github.com/pvande/yard-perl-plugin">document Perl code</a>!</p>
-            <span class="image" style="background-image: url(images/ss7.png);"></span>
+          <div class="blurb" data-bg="images/ss6.png">
+            <aside>
+              <img src="images/Paint-64.png" />
+              <h2>Easily Customize Templates <i class="fas fa-angle-right"></i></h2>
+              <p>YARD is the only Ruby documentation tool that supports storing metadata alongside your documentation. This metadata can be used to create consistent documentation in any format you wish. YARD also comes with a powerful templating system to quickly modify existing templates. And for the simple case, you can even add custom metadata to your docs with nothing but the command-line.</p>
+            </aside>
+          </div>
+
+          <div class="blurb" data-bg="images/ss7.png">
+            <aside>
+              <img src="images/Tool-64.png" />
+              <h2>Extend, Extend, Extend! <i class="fas fa-angle-right"></i></h2>
+              <p>YARD already has a handful of really great extensions, and that number is growing every day. YARD has tools to check your <a href="http://github.com/dkubb/yardstick">documentation quality</a> (and coverage), run inline RSpec tests, test your documentation <a href="http://github.com/lsegal/yard-examples/blob/master/doctest/doctest.rb">example code</a>, add "<a href="http://github.com/lsegal/yard-blame">git blame</a>" support to your source listings, graphs to your documentation, even one to <a href="http://github.com/pvande/yard-perl-plugin">document Perl code</a>!</p>
+            </aside>
           </div>
         </div>
-        <div class="clear"></div>
       </div>
     </div>
     <div class="midgray wrapper">

@@ -164,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const submit = document.getElementById('types_submit');
   const results = document.getElementById('types_results');
   const input = document.getElementById('types_text');
+  if (!submit) return;
 
   submit.addEventListener('click', () => {
     const result = TypesParser.parse(input.value);

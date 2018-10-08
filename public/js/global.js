@@ -48,3 +48,71 @@ function generateTOC() {
     $('#toc').toggleClass('nofloat');
   });
 }
+
+// hero
+document.addEventListener('DOMContentLoaded', () => {
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+
+  const showcase = document.getElementById('showcase');
+  const blurbs = hero.querySelectorAll('.blurb');
+  const selector = hero.querySelector('.selector');
+
+  function advanceTile(n) {
+    if (!n) n = 1;
+    var next = parseInt(hero.dataset.selected) + n;
+    if (next > blurbs.length) next = 1;
+    if (next <= 0) next = blurbs.length;
+    hero.dataset.selected = next.toString();
+  }
+
+  var advanceInterval = null;
+  function setAdvanceInterval() {
+    if (advanceInterval) clearInterval(advanceInterval);
+    advanceInterval = setInterval(advanceTile, 8000);
+  }
+
+  blurbs.forEach((el, idx) => {
+    const num = idx + 1;
+    const hdr = document.createElement('h1');
+    const div = document.createElement('div');
+    hdr.innerText = el.querySelector('h2').innerText;
+    div.classList.add(`tile${num}`);
+    el.classList.add(`tile${num}`);
+    div.style.backgroundImage = `url('${el.dataset.bg}')`;
+    div.appendChild(hdr);
+    showcase.appendChild(div);
+
+    const sel = document.createElement('i');
+    sel.className = 'fas fa-circle';
+    sel.dataset.selection = num;
+    selector.appendChild(sel);
+
+    el.addEventListener('mouseover', () => {
+      hero.dataset.selected = num.toString();
+      clearInterval(advanceInterval);
+      advanceInterval = null;
+    });
+    el.addEventListener('mouseout', () => {
+      setAdvanceInterval();
+    });
+    el.addEventListener('click', () => {
+      setAdvanceInterval();
+    });
+
+    sel.addEventListener('click', () => {
+      hero.dataset.selected = num.toString();
+      setAdvanceInterval();
+    });
+  });
+
+  setAdvanceInterval();
+  hero.querySelector('.fa-angle-left').addEventListener('click', () => {
+    setAdvanceInterval();
+    advanceTile(-1);
+  });
+  hero.querySelector('.fa-angle-right').addEventListener('click', () => {
+    setAdvanceInterval();
+    advanceTile();
+  });
+});
