@@ -88,16 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
     sel.dataset.selection = num;
     selector.appendChild(sel);
 
-    el.addEventListener('mouseover', () => {
+    el.addEventListener('mouseout', () => {
+      if (!advanceInterval) setAdvanceInterval();
+    });
+    el.addEventListener('click', () => {
       hero.dataset.selected = num.toString();
       clearInterval(advanceInterval);
       advanceInterval = null;
-    });
-    el.addEventListener('mouseout', () => {
-      setAdvanceInterval();
-    });
-    el.addEventListener('click', () => {
-      setAdvanceInterval();
     });
 
     sel.addEventListener('click', () => {
