@@ -5,6 +5,7 @@ pages:
   script:
   - bundle install
   - ruby ./scripts/generate
+  - sh ./scripts/cf_purge
   artifacts:
     paths:
     - public
