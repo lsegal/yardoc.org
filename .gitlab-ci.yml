@@ -4,7 +4,7 @@ pages:
   stage: deploy
   script:
   - bundle install
-  - ruby ./scripts/generate
+  - bundle exec ruby ./scripts/generate
   - sh ./scripts/cf_purge
   artifacts:
     paths:

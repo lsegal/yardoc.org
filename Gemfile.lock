@@ -2,7 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     rdiscount (2.2.0.1)
-    yard (0.9.4)
 
 PLATFORMS
   ruby
@@ -10,7 +9,6 @@ PLATFORMS
 
 DEPENDENCIES
   rdiscount
-  yard
 
 BUNDLED WITH
    1.16.3

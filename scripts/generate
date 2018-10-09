@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require 'yard'
+require 'pathname'
 require 'fileutils'
 require 'rdiscount'
 require 'erb'
@@ -46,7 +46,7 @@ def map(url, layout, &block)
 end
 
 Dir[File.join(ROOT, 'site/**/*.{md,html}')].each do |file|
-  rel = File.relative_path(File.dirname(file), ROOT)
+  rel = Pathname.new(File.dirname(file)).relative_path_from(Pathname.new(ROOT)).to_s
   rel = '.' if rel.empty?
   url = file.sub(/^#{ROOT}\/site\/*/, '').sub(/\.(html|md)$/, '')
   content = File.read(file)
