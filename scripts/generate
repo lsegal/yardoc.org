@@ -46,7 +46,7 @@ def map(url, layout, &block)
 end
 
 Dir[File.join(ROOT, 'site/**/*.{md,html}')].each do |file|
-  rel = Pathname.new(File.dirname(file)).relative_path_from(Pathname.new(ROOT)).to_s
+  rel = Pathname.new(ROOT).relative_path_from(Pathname.new(File.dirname(file)).parent).to_s
   rel = '.' if rel.empty?
   url = file.sub(/^#{ROOT}\/site\/*/, '').sub(/\.(html|md)$/, '')
   content = File.read(file)
