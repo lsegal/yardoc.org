@@ -6,7 +6,7 @@ This guide will explain how to use YARD to document a Domain Specific Language
 ## A Hello World Handler
 
 The most basic handler is implemented by inheriting from the
-[YARD::Handlers::Ruby::Base](http://yardoc.org/docs/yard/YARD/Handlers/Ruby/Base)
+[YARD::Handlers::Ruby::Base](http://rubydoc.info/gems/yard/YARD/Handlers/Ruby/Base)
 class. By subclassing, our handler is immediately registered and is checked
 whenever a statement is parsed. The following is the most basic handler.
 
@@ -72,8 +72,8 @@ found by running `ruby -rripper -e 'puts Ripper::EVENTS'` or in irb:
      :rbrace, :rbracket, :regexp_beg, :regexp_end, :rparen, :semicolon, :sp,
      :symbeg, :tlambda, :tlambeg, :tstring_beg, :tstring_content,
      :tstring_end, :words_beg, :words_sep]
-    
-<span class="note warn">You should consult [Ripper documentation](http://yardoc.org/docs/ruby-stdlib/Ripper)
+
+<span class="note warn">You should consult [Ripper documentation](http://www.rubydoc.info/stdlib/ripper)
 on the meaning of each node type, though currently the documentation for these
 nodes is sparse.</span>
 
@@ -83,7 +83,7 @@ handler what statement to match.
 
 ### Matchers
 
-The [`handles`](http://yardoc.org/docs/yard/YARD/Handlers/Base#handles-class_method)
+The [`handles`](http://rubydoc.info/gems/yard/YARD/Handlers/Base#handles-class_method)
 statement above therefore describes to YARD which statements a handler should
 process. We call these "**matchers**", because they determine if the current
 statement matches the handler.
@@ -113,13 +113,13 @@ The above handler would handle classes and modules.
 
 We discussed basic matchers based on a node type, but you can also create more
 complex custom matchers by subclassing the
-[HandlesExtension](http://yardoc.org/docs/YARD/Handlers/Ruby/HandlesExtension)
+[HandlesExtension](http://rubydoc.info/gems/yard/YARD/Handlers/Ruby/HandlesExtension)
 class which responds to `#matches?`. YARD has a few of these matchers already
 available for common tasks, like matching method calls and conditionals.
 
 Specifically, the new-style handlers provide the two matcher extensions
-[`method_call`](http://yardoc.org/docs/YARD/Handlers/Ruby/Base#method_call-class_method)
-and [`meta_type`](YARD/Handlers/Ruby/Base#meta_type-class_method). Which can
+[`method_call`](http://rubydoc.info/gems/yard/YARD/Handlers/Ruby/Base#method_call-class_method)
+and [`meta_type`](http://rubydoc.info/gems/yard/YARD/Handlers/Ruby/Base#meta_type-class_method). Which can
 be used in the form:
 
 ```ruby
@@ -142,7 +142,7 @@ handles meta_type(:condition)
 ```
 
 Which calls `#condition?` on the node. A full set of meta-types that can be
-tested for is found in the [AstNode](http://yardoc.org/docs/yard/YARD/Parser/Ruby/AstNode)
+tested for is found in the [AstNode](http://rubydoc.info/gems/yard/YARD/Parser/Ruby/AstNode)
 class.
 
 ## Creating a Simple DSL Handler
@@ -182,20 +182,20 @@ end
 ```
 
 First we should note that we've subclassed the
-[AttributeHandler](http://yardoc.org/docs/yard/YARD/Handlers/Ruby/AttributeHandler)
+[AttributeHandler](http://rubydoc.info/gems/yard/YARD/Handlers/Ruby/AttributeHandler)
 class to do most of the legwork in creating our actual attribute objects for
 us, since our DSL is basically an attribute but in the "class" scope. We
 then setup a matcher for the `cattr_accessor` method call (described above).
 
 You'll now notice something we never discussed before, the
-[`namespace_only`](http://yardoc.org/docs/yard/YARD/Handlers/Base#namespace_only-class_method)
+[`namespace_only`](http://rubydoc.info/gems/yard/YARD/Handlers/Base#namespace_only-class_method)
 method. This declaration tells our handler that we should only match method
 calls inside a namespace (class or module), not inside a method. This is not
 strictly necessary, but it avoids dealing with dynamic attributes and method
 calls that may not really be attribute declarations at all.
 
 Our process method simply calls
-[`#push_state`](http://yardoc.org/docs/yard/YARD/Handlers/Base#push_state-instance_method)
+[`#push_state`](http://rubydoc.info/gems/yard/YARD/Handlers/Base#push_state-instance_method)
 to set our scope to "class" level before calling super and running the
 `AttributeHandler`'s process method. This basically makes our `AttributeHandler`
 class run inside the class level and create attributes on our class rather than
@@ -205,7 +205,7 @@ as instance methods.
 
 We just saw a very simple handler that didn't do very much manipulation or
 object creation. Often, however, the purpose of a handler is to create a new
-[`CodeObject`](http://yardoc.org/docs/yard/YARD/CodeObjects/Base) or modify
+[`CodeObject`](http://rubydoc.info/gems/yard/YARD/CodeObjects/Base) or modify
 an existing one. To illustrate how to create and manipulate these code objects
 in YARD, let's look at a very simple DSL that creates new method objects that
 we'd want to document. Our DSL would create instance methods using the function
@@ -251,13 +251,13 @@ namespace.
 The process method is where it all gets interesting. On the first line of the
 method you will see that we access the `statement` object, which pertains to
 the root node of our current statement. Because our statement is a method call,
-we are dealing with a [`MethodCallNode`](http://yardoc.org/docs/yard/YARD/Parser/Ruby/MethodCallNode)
+we are dealing with a [`MethodCallNode`](http://rubydoc.info/gems/yard/YARD/Parser/Ruby/MethodCallNode)
 which has a list of parameters. We then take the first parameter and "jump"
 inside the string's quotes and get the inner text, which will become our method
 name. The next line creates our `MethodObject` by name in our current "namespace"
 (the current lexical module/class).
 
-Now we need to [`#register`](http://yardoc.org/docs/yard/YARD/Handlers/Base#register-instance_method)
+Now we need to [`#register`](http://rubydoc.info/gems/yard/YARD/Handlers/Base#register-instance_method)
 the object. This method is not strictly necessary, but is a helper method
 in handlers used to add common attributes to an object, like line range for
 the source code, file name the object is located in, source language, and other
@@ -267,7 +267,7 @@ We then parse the block (the inside of the method). YARD by default does not
 parse statements inside a block unless told to do so with this method. Again,
 it not strictly necessary, but it allows YARD to run handlers for statements
 inside of our method (like generating a tag for that "raise" method). The
-[`#parse_block`](http://yardoc.org/docs/yard/YARD/Handlers/Ruby/Base#parse_block-instance_method)
+[`#parse_block`](http://rubydoc.info/gems/yard/YARD/Handlers/Ruby/Base#parse_block-instance_method)
 method does this for us, and takes two parameters: the node with the block and
 any extra state information to push while inside the block (similar to the
 `push_state` method we saw before). `statement.last.last` is the list of
