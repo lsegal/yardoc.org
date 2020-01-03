@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html> 
+  <head> 
+    <link rel="icon" type="image/png" href="./favicon.ico" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="yard, ruby, software, documentation, uml, tags, metadata, parser, html, yardoc" />
+<meta name="Description" content="YARD is an extensible Ruby Documentation Tool (Yay!) for consistent documentation." /> 
+<link rel="stylesheet" href="./css/style.css" type="text/css" charset="utf-8" />
+<script type="text/javascript" src="./js/types.js"></script>
+<script type="text/javascript" src="./js/global.js"></script>
+
+    <title>YARD - A Ruby Documentation Tool</title> 
+  </head> 
+  <body> 
+    <div class="top wrapper">
+  <div id="top">
+    <div id="release">
+      <p class="version"><strong>Latest Release</strong></p>
+      <p class="date"><a href="http://badge.fury.io/rb/yard"><img src="https://badge.fury.io/rb/yard@2x.png" alt="Gem Version" height="18"></a></p>
+      <p class="links"><a href="http://rubydoc.info/gems/yard/file/docs/WhatsNew.md">What's New</a> - <a href="http://rubydoc.info/gems/yard/file/README.md">README</a></p>
+    </div>
+    <a href="./index.html" id="logo"></a>
+    <!--
+    <img src="http://waiau.wikispaces.com/file/view/pirate.gif/84085425/pirate.gif" height="60" style="position:relative;top:0px;left:260px;">
+    <div style="position:absolute;top:60px;margin-left:5px; background: #fff; padding: 4px;"><strong>Yarr!</strong> A Ruby documentation tool!</div>
+    -->
+    <ul id="nav">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./features.html">Features</a></li>
+      <li><a href="./guides/index.html">Guides</a></li>
+      <li><a href="http://github.com/lsegal/yard">Source</a></li>
+      <li><a href="http://rubydoc.info">RubyDoc.info</a></li>
+    </ul>
+  </div>
+</div>
+
+
+    <div id="hero" data-selected="1">
+      <div class="dark wrapper">
+        <div id="showcase">
+          <i class="fas fa-angle-left"></i>
+          <i class="fas fa-angle-right"></i>
+        </div>
+      </div>
+      <div class="light wrapper">
+        <div class="selector"></div>
+        <div id="content" class="home">
+          <div class="blurb" data-bg="images/ss5.png">
+            <aside>
+              <img src="images/Preview-64.png" />
+              <h2>Preview As You Document <i class="fas fa-angle-right"></i></h2>
+              <p>With the new dynamic documentation server in YARD 0.6, you can now see exactly what YARD sees as you document your code. Simply type <code>yard server --reload</code> to have your project watch for changes in your codebase everytime you refresh the page. With this functionality, you almost have no excuse <em>not</em> to write documentation!</p>  
+            </aside>
+          </div>
+          
+          <div class="blurb" data-bg="images/ss8.png">
+            <aside>
+              <img src="images/Certificate-64.png" />
+            <h2>Support Your Own DSL <i class="fas fa-angle-right"></i></h2>
+            <p>You can write all kinds of extensions in YARD, including ones that can understand all of the dynamic magic your framework does in its own little Domain Specific Languages (DSLs). Most importantly, it's <a href="guides/extending-yard/writing-handlers.html">really easy</a> to do! There are already plugins that support frameworks like <a href="http://rspec.info">RSpec</a>, <a href="http://datamapper.org">DataMapper</a>, <a href="http://www.sinatrarb.com">Sinatra</a>, and support for others are in the works.</p>
+            </aside>
+          </div>
+
+          <div class="blurb" data-bg="images/ss6.png">
+            <aside>
+              <img src="images/Paint-64.png" />
+              <h2>Easily Customize Templates <i class="fas fa-angle-right"></i></h2>
+              <p>YARD is the only Ruby documentation tool that supports storing metadata alongside your documentation. This metadata can be used to create consistent documentation in any format you wish. YARD also comes with a powerful templating system to quickly modify existing templates. And for the simple case, you can even add custom metadata to your docs with nothing but the command-line.</p>
+            </aside>
+          </div>
+
+          <div class="blurb" data-bg="images/ss7.png">
+            <aside>
+              <img src="images/Tool-64.png" />
+              <h2>Extend, Extend, Extend! <i class="fas fa-angle-right"></i></h2>
+              <p>YARD already has a handful of really great extensions, and that number is growing every day. YARD has tools to check your <a href="http://github.com/dkubb/yardstick">documentation quality</a> (and coverage), run inline RSpec tests, test your documentation <a href="http://github.com/lsegal/yard-examples/blob/master/doctest/doctest.rb">example code</a>, add "<a href="http://github.com/lsegal/yard-blame">git blame</a>" support to your source listings, graphs to your documentation, even one to <a href="http://github.com/pvande/yard-perl-plugin">document Perl code</a>!</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="midgray wrapper">
+      <div id="about" class="home">
+        <div id="what-is">
+          <h2 class="nomargin">What Is YARD?</h2>
+          <img class="seat" src="images/Magenta-Seat-256.png" title="Nothing to do with YARD, it just looks cool. "/>
+          <p>YARD is a documentation generation tool for the Ruby programming language. It enables the user to generate consistent, usable documentation that can be exported to a number of formats very easily, and also supports extending for custom Ruby constructs such as custom class level definitions. Above is a highlight of the some of YARD's notable features.</p>
+          <p>And of course YARD comes with much more functionality, including the ability to serve documentation for gems, the ability to group methods into logical sections, and much more. You can read about all of the new features in YARD 0.6 in the <a href="">What's New</a> document.</p>
+        </div>
+        
+        <div class="clear"></div>
+        <div class="install">
+          <h2>Installing &amp; Using</h2>
+          
+          <div class="column">
+            <p>To install YARD with RubyGems:</p>
+            <pre class="install"><code class="sh">$ gem install yard</code></pre>
+          </div>
+          
+          <div class="column">
+            <p>And see all the commands:</p>
+            <pre><code class="sh">$ yard --help</code></pre>
+          </div>
+          <div class="clear"></div>
+        </div>
+        
+        <div class="columns">
+          <div class="column uses">
+            <h2>Who Uses YARD?</h2>
+            <p>YARD is used in a wide variety of projects including personal ones that we don't know about, but here are some projects that we know do:</p>
+            <p><a href='https://github.com/sporkmonger/addressable'>Addressable</a>, <a href='http://amp.carboni.ca/'>Amp</a>, 
+              <a href='http://crm114.rubyforge.org/'>CRM114.rb</a>, <a href='http://datamapper.org/'>DataMapper</a>, 
+              <a href='http://github.com/robgleeson/dia'>Dia</a>, 
+              <a href='http://haml.info/'>Haml</a>, 
+              <a href='http://tagaholic.me/lightning'>lightning</a>, 
+              <a href='http://github.com/mongodb/mongo-ruby-driver'>MongoDB</a>, 
+              <a href='http://nanoc.ws/'>nanoc</a>, 
+              <a href='http://ohm.keyvalue.org/'>Ohm</a>, 
+              <a href='https://puppet.com/'>Puppet</a>, 
+              <a href='http://ronin-ruby.github.io/'>Ronin</a>, 
+              <a href='http://sass-lang.com/'>Sass</a>, 
+              <a href='http://spidr.rubyforge.org/'>Spidr</a>, 
+              <a href='https://robots.thoughtbot.com/documentation-demolition-derby'>thoughtbot</a>, 
+              <a href='http://vanity.labnotes.org/'>vanity</a>.
+            
+            <p>YARD also runs a live documentation server for the community, hosting docs for all RubyGems and Github projects.
+              The project is at <a href="http://rubydoc.info">RubyDoc.info</a> (formerly rdoc.info)</p>
+            
+          </div>
+          <div class="column support">
+            <h2>Contributing &amp; Support</h2>
+            <p>If you're interested in helping out, you can use the following methods to get in touch:</p>
+            <ul>
+              <li>IRC: <tt><a href="irc://irc.freenode.net/yard">#yard</a></tt> on <tt>irc.freenode.net</tt>.</li> 
+              <li>Mailing list: <a href="http://groups.google.com/group/yardoc">http://groups.google.com/group/yardoc</a></li> 
+              <li>Github: <a href="http://github.com/lsegal/yard">http://github.com/lsegal/yard</a></li> 
+            </ul> 
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright wrapper">
+  <div id="copyright">
+    <p>Copyright &copy; 2007-2020. YARD is written by
+    <a href="http://gnuu.org">Loren Segal</a>. 
+    Design by <a href="http://gnuu.org">gnuu.org</a>. 
+    YARD uses the MIT License.</p>
+  </div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-7172246-6', 'yardoc.org');
+  ga('send', 'pageview');
+
+</script>
+
+  </body> 
+</html>
