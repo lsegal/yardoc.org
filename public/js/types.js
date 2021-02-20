@@ -153,7 +153,7 @@ class TypesParser {
       return result;
     } catch (e) {
       if (e instanceof SyntaxError) {
-        return e.message;
+        return [e.message];
       }
       throw e;
     }
