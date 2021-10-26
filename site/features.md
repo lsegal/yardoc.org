@@ -12,7 +12,7 @@ important information about objects, such as what parameters they take and what 
 they are expected to be, what type a method should return, what exceptions it can 
 raise, if it is deprecated, etc.. It also allows information to be better (and more 
 consistently) organizedduring the output generation phase. You can find a list
-of tags in the [Tags.md](http://yardoc.org/docs/yard/file/docs/Tags.md#List_of_Available_Tags) file.
+of tags in the [Tags.md](https://rubydoc.info/gems/yard/file/docs/Tags.md#Tag_List) file.
 
 YARD also supports an optional "types" declarations for certain tags.
 This allows the developer to document type signatures for ruby methods and
