@@ -1,10 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    rdiscount (2.2.0.1)
+    rdiscount (2.2.7.4)
 
 PLATFORMS
-  x64-mingw32
+  x64-mingw-ucrt
+  x86_64-linux
 
 DEPENDENCIES
   rdiscount
